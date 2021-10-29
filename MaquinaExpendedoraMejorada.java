@@ -34,12 +34,7 @@ public class MaquinaExpendedoraMejorada {
      * Devuelve el precio del billete
      */
     public int getPrecioBillete() {
-        if (maquinaPremiada = true) {
-            return (precioBillete * 90)/100;
-        }
-        else {
-            return precioBillete;
-        }   
+            return precioBillete;   
     }
 
     /**
@@ -73,7 +68,12 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
-            System.out.println();         
+            System.out.println();
+            if (maquinaPremiada = true){
+                System.out.println("Descuento de " + precioBillete/10 + " euros en GADIS");
+                System.out.println();
+            }
+                
 
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
@@ -82,6 +82,7 @@ public class MaquinaExpendedoraMejorada {
             // Suma en uno los billetes vendidos
             billetesVendidos = billetesVendidos + 1;
         }
+        
         else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
