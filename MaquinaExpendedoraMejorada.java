@@ -69,7 +69,7 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("# " + precioBillete + " euros.");
             System.out.println("##################");
             System.out.println();
-            if (maquinaPremiada = true){
+            if (maquinaPremiada == true){
                 System.out.println("Descuento de " + precioBillete/10 + " euros en GADIS");
                 System.out.println();
             }
