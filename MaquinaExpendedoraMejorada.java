@@ -91,9 +91,15 @@ public class MaquinaExpendedoraMejorada {
      */
     public int vaciarDineroDeLaMaquina() {
         int cantidadDeDineroVaciado;
-        cantidadDeDineroVaciado = totalDineroAcumulado + balanceClienteActual;
-        balanceClienteActual = 0;
-        totalDineroAcumulado = 0;
+        if (balanceClienteActual == 0) {        
+            cantidadDeDineroVaciado = totalDineroAcumulado;
+            totalDineroAcumulado = 0;
+        }
+        else {
+            System.out.println("Se está llevando a cabo una compra de billetes");
+            System.out.println();   
+            cantidadDeDineroVaciado = -1;
+        }       
         return cantidadDeDineroVaciado;
     }
 }
