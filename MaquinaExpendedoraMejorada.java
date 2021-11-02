@@ -14,13 +14,15 @@ public class MaquinaExpendedoraMejorada {
     private int billetesVendidos;
     // Indica si la máquina está premiada
     private boolean maquinaPremiada;
+    // Máximo biletes que se pueden vender
+    private int maximoBilletes;
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean estadoMaquina) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean estadoMaquina, int numeroMaximoBilletes) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
@@ -28,6 +30,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
         billetesVendidos = 0;
         maquinaPremiada = estadoMaquina;
+        maximoBilletes = numeroMaximoBilletes;
     }
 
     /**
@@ -49,7 +52,14 @@ public class MaquinaExpendedoraMejorada {
      */
     public void introducirDinero(int cantidadIntroducida) {
         if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            if (billetesVendidos < maximoBilletes) {        
+                balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            }
+            
+            else {
+                System.out.println(" Ya has comprado el máximo de billetes posibles.");
+                System.out.println();
+            }
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
@@ -62,18 +72,24 @@ public class MaquinaExpendedoraMejorada {
     public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         if (cantidadDeDineroQueFalta <= 0) {        
-            // Simula la impresion de un billete
-            System.out.println("##################");
-            System.out.println("# Billete de tren:");
-            System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-            System.out.println("# " + precioBillete + " euros.");
-            System.out.println("##################");
-            System.out.println();
+            if (billetesVendidos < maximoBilletes) {        
+                System.out.println("##################");
+                System.out.println("# Billete de tren:");
+                System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+                System.out.println("# " + precioBillete + " euros.");
+                System.out.println("##################");
+                System.out.println();
+            }
+            else{
+                System.out.println("Máximo número de billetes comprados");
+                System.out.println();
+            }
+            
             if (maquinaPremiada == true){
                 System.out.println("Descuento de " + precioBillete/10 + " euros en GADIS");
                 System.out.println();
             }
-                
+            
 
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
