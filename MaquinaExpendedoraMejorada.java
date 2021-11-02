@@ -80,16 +80,15 @@ public class MaquinaExpendedoraMejorada {
                 System.out.println("##################");
                 System.out.println();
             }
+            if (maquinaPremiada == true){
+                    if(billetesVendidos%3 == 0){
+                    System.out.println("Descuento de " + precioBillete/10 + " euros en GADIS");
+                    System.out.println();
+                    }    
+            }
             else{
                 System.out.println("Máximo número de billetes comprados");
                 System.out.println();
-            }
-            
-            if (maquinaPremiada == true){
-                if (billetesVendidos < maximoBilletes) {        
-                System.out.println("Descuento de " + precioBillete/10 + " euros en GADIS");
-                System.out.println();
-            }
             }
             
 
